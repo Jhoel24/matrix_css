@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matrix Effect</title>
+    <title>Matrix Effect - Rainbow</title>
     <style>
         body {
             margin: 0;
@@ -35,13 +35,15 @@
         }
 
         function draw() {
-            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)"; // Semi-transparent background for fading effect
             ctx.fillRect(0, 0, c.width, c.height);
-            ctx.fillStyle = "#0F0";
             ctx.font = font_size + "px Arial";
 
             for (let i = 0; i < drops.length; i++) {
                 let text = matrix[Math.floor(Math.random() * matrix.length)];
+                let hue = (i * 10) % 360; 
+                ctx.fillStyle = `hsl(${hue}, 100%, 50%)`;
+
                 ctx.fillText(text, i * font_size, drops[i] * font_size);
 
                 if (drops[i] * font_size > c.height && Math.random() > 0.975) {
