@@ -3,7 +3,7 @@
 A **Matrix-style rain animation** with a colorful **rainbow effect**, created using **HTML5 Canvas and JavaScript**. This project is designed to **practice CSS animations and JavaScript canvas rendering**.
 
 ## 🚀 Live Demo
-👉 [Matrix Effect - Rainbow](https://your-github-username.github.io/matrix_css/)
+👉 [Matrix Effect - Rainbow](https://jhoel24.github.io/matrix_css/)
 
 ## 📌 About the Project
 - **Inspired by "The Matrix"** digital rain effect.
