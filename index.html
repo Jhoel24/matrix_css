@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Effect</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: black;
+        }
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="c"></canvas>
+    <script>
+        let c = document.getElementById('c');
+        let ctx = c.getContext('2d');
+        c.height = window.innerHeight;
+        c.width = window.innerWidth;
+
+        let matrix = "QWERTYUIOPASDFGHJKLZXCVBNM1234567890!@#$%^&*()";
+        matrix = matrix.split("");
+
+        let font_size = 20;
+        let columns = c.width / font_size;
+        let drops = [];
+
+        for (let x = 0; x < columns; x++) {
+            drops[x] = Math.floor(Math.random() * c.height / font_size);
+        }
+
+        function draw() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, c.width, c.height);
+            ctx.fillStyle = "#0F0";
+            ctx.font = font_size + "px Arial";
+
+            for (let i = 0; i < drops.length; i++) {
+                let text = matrix[Math.floor(Math.random() * matrix.length)];
+                ctx.fillText(text, i * font_size, drops[i] * font_size);
+
+                if (drops[i] * font_size > c.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+
+                drops[i]++;
+            }
+        }
+
+        setInterval(draw, 50);
+
+        window.addEventListener("resize", () => {
+            c.height = window.innerHeight;
+            c.width = window.innerWidth;
+            columns = c.width / font_size;
+            drops = [];
+            for (let x = 0; x < columns; x++) {
+                drops[x] = Math.floor(Math.random() * c.height / font_size);
+            }
+        });
+    </script>
+</body>
+</html>
